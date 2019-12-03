@@ -13,7 +13,7 @@ from src.exceptions import InnerException
 
 BaseModel = declarative_base()
 MYSQL_URL = 'mysql+pymysql://root:111111@127.0.0.1:3306/blog?charset=utf8mb4'
-# engine = create_engine(MYSQL_URL, echo=True)
+
 
 engine = create_engine(MYSQL_URL,
                        pool_size=5,
@@ -61,15 +61,6 @@ class ModelMixin(object):
         with session_scope() as db_session:
             db_session.delete(self)
             db_session.commit()
-
-    # def to_dict(self, exclude_columns=None):
-    #     if exclude_columns is None:
-    #         exclude_columns = []
-    #     d = {}
-    #     for column in self.__table__.columns:
-    #         if column.name in exclude_columns:
-    #             continue
-    #         d[column.name] = getattr(self, column.name)
 
 
 class User(BaseModel, ModelMixin):

@@ -23,6 +23,22 @@ def create(data):
 
 
 @run_on_executor()
+def get_weibo_list(data):
+    offset = data.get('offset', 0)
+    limit = data.get('limit', 10)
+    with session_scope() as db_session:
+        weibo_list = db_session.query(Weibo).offset(offset).limit(limit)
+        return [
+            {
+                'id': weibo.id,
+                'content': weibo.content,
+                'user_id': weibo.user_id,
+                'create_time': weibo.create_time
+            } for weibo in weibo_list
+        ]
+
+
+@run_on_executor()
 def create2(data):
     content = data.get('content')
     user_id = data.get('user_id')
