@@ -1,0 +1,8 @@
+*.pyc
+update.sql.local
+logs/
+.DS_Store
+.idea/*
+*.pyc
+__pycache__/*
+update.sql
