@@ -1,4 +1,6 @@
 from contextlib import contextmanager
+from werkzeug.security import generate_password_hash, check_password_hash
+from hmac import compare_digest
 
 from sqlalchemy.sql import func
 from sqlalchemy import Column, Integer, VARCHAR, DateTime
@@ -8,7 +10,7 @@ from sanic.log import logger
 from sqlalchemy.pool import QueuePool
 from sqlalchemy.orm import sessionmaker
 
-from src.exceptions import InnerException
+from src import exceptions
 
 
 BaseModel = declarative_base()
@@ -55,7 +57,7 @@ class ModelMixin(object):
                 db_session.commit()
             except Exception as e:
                 logger.error("将{}写入数据库错误: {}".format(self.__class__.__name__, e))
-                raise InnerException("ERR", "写入数据库错误")
+                raise exceptions.DbError("ERR", "写入数据库错误")
 
     def delete(self):
         with session_scope() as db_session:
@@ -65,8 +67,22 @@ class ModelMixin(object):
 
 class User(BaseModel, ModelMixin):
     __tablename__ = 't_user_info'
-    name = Column(VARCHAR(32), nullable=False, comment='用户名')
+    username = Column(VARCHAR(32), nullable=False, comment='用户名')
+    _password = Column(VARCHAR(256), nullable=False, comment='密码')
     age = Column(Integer, default="", nullable=False, comment='用户年龄')
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, raw_pwd):
+        self._password = generate_password_hash(raw_pwd)
+
+    def check_password(self, password, is_hash=False):
+        if is_hash:
+            return compare_digest(self.password, password)
+        return check_password_hash(self.password, password)
 
 
 class Weibo(BaseModel, ModelMixin):

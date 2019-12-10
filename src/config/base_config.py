@@ -17,3 +17,7 @@ class Config():
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
     SQLALCHEMY_DATABASE_URI = "mysql://root:111111@127.0.0.1:3306/training?charset=utf8mb4"
+    REDIS_KEY_PREFIX = 'blog_'
+    REDIS_KEY_TIMEOUT = 3600
+    TOKEN_LIFETIME = 7 * 24 * 60 * 60
+    SECRET_KEY = 'hard to guess string'

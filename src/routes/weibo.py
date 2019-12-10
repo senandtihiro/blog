@@ -6,6 +6,7 @@ from sanic.response import json
 from sanic import Blueprint
 
 from src.controllers import weibo as weibo_controller
+from . import authorized
 
 
 weibo = Blueprint('weibo', url_prefix='/weibo')
@@ -23,6 +24,7 @@ weibo = Blueprint('weibo', url_prefix='/weibo')
 """
 
 @weibo.route('/create', methods=['POST'])
+@authorized()
 async def create(request):
     loop = asyncio.get_event_loop()
     with concurrent.futures.ThreadPoolExecutor() as pool:

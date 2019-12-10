@@ -3,7 +3,7 @@ import time
 from src.models.entities import Weibo
 from src.models import session_scope
 
-from . import run_on_executor
+from src.controllers import run_on_executor
 
 
 def create(data):
