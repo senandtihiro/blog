@@ -30,8 +30,6 @@ auth = Blueprint('auth', url_prefix='/auth')
 @auth.route("/login", methods=["POST"])
 async def login(request):
     res = await auth_controller.verify_user(request)
-    print('debug res:', res)
-
     return json(res)
 
 

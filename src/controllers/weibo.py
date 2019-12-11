@@ -6,14 +6,13 @@ from src.models import session_scope
 from src.controllers import run_on_executor
 
 
-def create(data):
+def create(data, user_id):
     content = data.get('content')
-    user_id = data.get('user_id')
     with session_scope() as db_session:
         weibo = Weibo(content=content, user_id=user_id)
         db_session.add(weibo)
         db_session.commit()
-        print('debug controller res:', weibo.content)
+
         return {
             'id': weibo.id,
             'content': weibo.content,

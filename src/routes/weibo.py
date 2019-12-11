@@ -25,12 +25,13 @@ weibo = Blueprint('weibo', url_prefix='/weibo')
 
 @weibo.route('/create', methods=['POST'])
 @authorized()
-async def create(request):
+async def create(request, **kwargs):
     loop = asyncio.get_event_loop()
     with concurrent.futures.ThreadPoolExecutor() as pool:
     #     result = await loop.run_in_executor(
     #         pool, weibo_controller.create, request.json)
-        result = await loop.run_in_executor(pool, partial(weibo_controller.create, request.json))
+        user_id = kwargs.get('user_id')
+        result = await loop.run_in_executor(pool, partial(weibo_controller.create, request.json, user_id))
 
         return json(result)
 

@@ -69,7 +69,8 @@ class User(BaseModel, ModelMixin):
     __tablename__ = 't_user_info'
     username = Column(VARCHAR(32), nullable=False, comment='用户名')
     _password = Column(VARCHAR(256), nullable=False, comment='密码')
-    age = Column(Integer, default="", nullable=False, comment='用户年龄')
+    age = Column(Integer, default="0", nullable=False, comment='用户年龄')
+    status = Column(Integer, default="1", nullable=False, comment='用户状态')
 
     @property
     def password(self):

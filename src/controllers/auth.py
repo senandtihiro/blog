@@ -1,19 +1,22 @@
-import time
-
-
 from src.controllers import run_on_executor
 from src.models.entities import User
 from src.models import session_scope
 from src import exceptions
-from src.controllers import create_and_cache_token
+from src.routes import create_and_cache_token
+from src import client_info_from_request_data
 
 
 async def verify_user(request):
+    """
+    是否放到线程池中执行是可选的，所以不一定要加装饰器，这个时候只能优化sql，确保速度够快
+    :param request:
+    :return:
+    """
     request_data = request.json
     username = request_data.get('username')
     password = request_data.get('password')
 
-    user_agent = request.headers.get('User-Agent')
+    # user_agent = request.headers.get('User-Agent')
 
     with session_scope() as db_session:
         user = db_session.query(User).filter_by(username=username).first()
@@ -23,10 +26,8 @@ async def verify_user(request):
         if not user.check_password(password):
             raise exceptions.PasswordError()
 
-        client_info = '-'.join([str(request_data.get('app_channel')),
-                                str(request_data.get('os_type')),
-                                str(request_data.get('device_uuid'))])
-        token = await create_and_cache_token(user_agent, user.id, password, client_info)
+        client_info = client_info_from_request_data(request_data)
+        token = await create_and_cache_token(user.id, password, client_info)
 
         return {
             'user_id': user.id,
