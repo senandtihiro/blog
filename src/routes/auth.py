@@ -1,13 +1,7 @@
-import asyncio
-import concurrent.futures
-from functools import partial
-
 from sanic.response import json
 from sanic import Blueprint
 
 from src.controllers import auth as auth_controller
-from . import authorized
-from src import exceptions
 
 
 auth = Blueprint('auth', url_prefix='/auth')
