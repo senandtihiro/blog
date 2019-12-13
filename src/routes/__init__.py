@@ -1,18 +1,16 @@
 import time
 from functools import wraps
-from itsdangerous import URLSafeSerializer
 from hmac import compare_digest
 
-from sanic.response import json
+from itsdangerous import URLSafeSerializer
 from sanic.log import logger
-
-from src.config.base_config import Config
-from src import exceptions
-from src.models.entities import User
-from src import client_info_from_request_data, get_client_ident
+from sanic.response import json
 from src.cache import redis_cache
-from src.models import session_scope
 
+from src import client_info_from_request_data, get_client_ident, exceptions
+from ..config.base_config import Config
+from ..models import session_scope
+from ..models.entities import User
 
 TOKEN_NAME = 'token'
 TOKENID_PREFIX = 'weibo_user_'

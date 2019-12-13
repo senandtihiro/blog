@@ -1,8 +1,7 @@
-from sanic.response import json
 from sanic import Blueprint
+from sanic.response import json
 
 from src.controllers import auth as auth_controller
-
 
 auth = Blueprint('auth', url_prefix='/auth')
 

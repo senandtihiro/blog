@@ -1,9 +1,9 @@
 import time
 
-from src.models.entities import Weibo
-from src.models import session_scope
+from ..controllers import run_on_executor
+from ..models import session_scope
 
-from src.controllers import run_on_executor
+from src.models.entities import Weibo
 
 
 def create(data, user_id):

@@ -2,12 +2,11 @@ import asyncio
 import concurrent.futures
 from functools import partial
 
-from sanic.response import json
 from sanic import Blueprint
+from sanic.response import json
+from ..controllers import weibo as weibo_controller
 
-from src.controllers import weibo as weibo_controller
 from . import authorized
-
 
 weibo = Blueprint('weibo', url_prefix='/weibo')
 

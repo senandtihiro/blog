@@ -1,9 +1,9 @@
-from src.controllers import run_on_executor
-from src.models.entities import User
-from src.models import session_scope
 from src import exceptions
+from src.controllers import run_on_executor
+from src.models import session_scope
+from src.models.entities import User
 from src.routes import create_and_cache_token
-from src import client_info_from_request_data
+from .. import client_info_from_request_data
 
 
 async def verify_user(request):

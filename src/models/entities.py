@@ -1,17 +1,16 @@
 from contextlib import contextmanager
-from werkzeug.security import generate_password_hash, check_password_hash
 from hmac import compare_digest
 
-from sqlalchemy.sql import func
-from sqlalchemy import Column, Integer, VARCHAR, DateTime
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
 from sanic.log import logger
-from sqlalchemy.pool import QueuePool
+from sqlalchemy import Column, Integer, VARCHAR, DateTime
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import QueuePool
+from sqlalchemy.sql import func
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from src import exceptions
-
 
 BaseModel = declarative_base()
 MYSQL_URL = 'mysql+pymysql://root:111111@127.0.0.1:3306/blog?charset=utf8mb4'

@@ -5,8 +5,8 @@
 
 """
 import json
-from src.config.base_config import Config
 
+from src.config.base_config import Config
 
 try:
     import aioredis
