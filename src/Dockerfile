@@ -2,7 +2,7 @@ FROM python:3.7.1
 
 WORKDIR /server
 
-ADD . /temp1
+ADD . /server
 
 RUN pip install --upgrade pip
 
