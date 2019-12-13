@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple/ --
 
 EXPOSE 8000
 
-CMD gunicorn run:app --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker
+CMD gunicorn app:app --bind 0.0.0.0:8000 --worker-class sanic.worker.GunicornWorker
