@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from src import exceptions
 
 BaseModel = declarative_base()
-MYSQL_URL = 'mysql+pymysql://root:111111@127.0.0.1:3306/blog?charset=utf8mb4'
+MYSQL_URL = 'mysql+pymysql://root:123456@127.0.0.1:3306/blog?charset=utf8mb4'
 
 
 engine = create_engine(MYSQL_URL,

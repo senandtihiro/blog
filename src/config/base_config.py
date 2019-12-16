@@ -16,7 +16,7 @@ class Config():
     SQLALCHEMY_POOL_RECYCLE = 3600  # 空连接回收时间，秒
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-    SQLALCHEMY_DATABASE_URI = "mysql://root:123456@127.0.0.1:3306/training?charset=utf8mb4"
+    SQLALCHEMY_DATABASE_URI = "mysql://root:123456@127.0.0.1:3306/blog?charset=utf8mb4"
     REDIS_KEY_PREFIX = 'blog_'
     REDIS_KEY_TIMEOUT = 3600
     TOKEN_LIFETIME = 7 * 24 * 60 * 60
