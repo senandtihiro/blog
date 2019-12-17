@@ -26,10 +26,10 @@ LOGGING_CONFIG = {
     },
     'formatters': {
         'default': {
-            'format': '%(asctime)s %(levelname)s %(name)s:%(lineno)d | %(message)s',
+            'format': '%(asctime)s %(levelname)s %(pathname)s:%(lineno)d | %(message)s',
         },
         'debug': {
-            'format': '%(asctime)s - %(levelname)s - %(name)s:%(lineno)d | %(message)s',
+            'format': '%(asctime)s - %(levelname)s - %(pathname)s:%(lineno)d | %(message)s',
         }
     },
     'loggers': {
