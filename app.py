@@ -6,6 +6,7 @@ from sanic.exceptions import SanicException
 from sanic.log import logger
 
 from src.logger import LOGGING_CONFIG
+from src.exceptions import ApiException
 
 
 app = Sanic(name='blog', log_config=LOGGING_CONFIG)
@@ -23,7 +24,7 @@ COMMON_PARAM_LIST = [
 
 @app.exception(SanicException)
 def json_error(request, exception):
-    if isinstance(exception, SanicException):
+    if isinstance(exception, ApiException):
         return json(
             {
                 'error_code': exception.code,
