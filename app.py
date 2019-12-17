@@ -3,9 +3,12 @@ from sanic.response import json
 
 from src.config.base_config import Config
 from sanic.exceptions import SanicException
+from sanic.log import logger
+
+from src.logger import LOGGING_CONFIG
 
 
-app = Sanic(__name__)
+app = Sanic(name='blog', log_config=LOGGING_CONFIG)
 
 
 # 公共参数列表
@@ -20,12 +23,21 @@ COMMON_PARAM_LIST = [
 
 @app.exception(SanicException)
 def json_error(request, exception):
-    return json(
-        {
-            'error_code': exception.code,
-            'message': exception.message,
-        }
-    )
+    if isinstance(exception, SanicException):
+        return json(
+            {
+                'error_code': exception.code,
+                'message': exception.message,
+            }
+        )
+    else:
+        logger.error(f'server error {exception}')
+        return json(
+            {
+                'error_code': 'ERROR',
+                'message': '服务器内部异常',
+            }
+        )
 
 
 # 加载配置文件

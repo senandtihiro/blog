@@ -1,0 +1,13 @@
+2019-12-17 14:19:01,594 - INFO - sanic.root:1120 | Goin' Fast @ http://0.0.0.0:8000
+2019-12-17 14:19:02,297 - INFO - sanic.root:720 | Starting worker [8735]
+2019-12-17 14:19:09,916 - INFO - sanic.root:107 | debug student cached token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU, input token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU
+2019-12-17 14:19:09,951 - INFO - sanic.root:17 | user 1 create new weibo 5
+2019-12-17 14:19:09,952 - INFO - sanic.access:362 | 
+2019-12-17 14:19:14,649 - INFO - sanic.root:107 | debug student cached token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU, input token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU
+2019-12-17 14:19:14,668 - INFO - sanic.root:17 | user 1 create new weibo 6
+2019-12-17 14:19:14,670 - INFO - sanic.access:362 | 
+2019-12-17 14:22:39,146 - INFO - sanic.root:1120 | Goin' Fast @ http://0.0.0.0:8000
+2019-12-17 14:22:39,826 - INFO - sanic.root:720 | Starting worker [8789]
+2019-12-17 14:22:45,034 - INFO - sanic.root:107 | debug student cached token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU, input token:.eJwdzbkRAzEIQNFeFCvgEkctHgcClv5L8I5_9LL_wb3w39orDMZFCu4ADxtSYmQi38sup06APB2DxxrltZVTFJkUiiJG65SRCKjdoI5nEgs4AJwd8yQd75uS0Fy3uceTr5XNo6S5toI4wH4HepSF7PsD1qEpIA.pZZVb9sNbw-45Zjos8k3gplxsKU
+2019-12-17 14:22:45,064 - INFO - sanic.root:17 | user 1 create new weibo 7
+2019-12-17 14:22:45,078 - INFO - sanic.access:362 | 

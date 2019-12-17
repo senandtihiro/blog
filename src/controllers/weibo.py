@@ -1,8 +1,9 @@
 import time
 
+from sanic.log import logger
+
 from ..controllers import run_on_executor
 from ..models import session_scope
-
 from src.models.entities import Weibo
 
 
@@ -12,6 +13,7 @@ def create(data, user_id):
         weibo = Weibo(content=content, user_id=user_id)
         db_session.add(weibo)
         db_session.commit()
+        logger.info(f'user {user_id} create new weibo {weibo.id}')
 
         return {
             'id': weibo.id,
