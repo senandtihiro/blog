@@ -12,8 +12,8 @@ from src.routes.auth import auth_bp
 
 
 app = Sanic(name='blog', log_config=LOGGING_CONFIG)
-# app.blueprint(weibo_bp)
-# app.blueprint(auth_bp)
+app.blueprint(weibo_bp)
+app.blueprint(auth_bp)
 
 
 # 公共参数列表
