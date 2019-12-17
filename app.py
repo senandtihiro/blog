@@ -1,8 +1,8 @@
 from sanic import Sanic
-from sanic.response import json
+from sanic.response import json, text
 
 from src.config.base_config import Config
-from sanic.exceptions import SanicException
+from sanic.exceptions import SanicException, NotFound
 from sanic.log import logger
 
 from src.logger import LOGGING_CONFIG
@@ -12,6 +12,9 @@ from src.routes.auth import auth_bp
 
 
 app = Sanic(name='blog', log_config=LOGGING_CONFIG)
+
+
+# 加载蓝图模块
 app.blueprint(weibo_bp)
 app.blueprint(auth_bp)
 
@@ -26,6 +29,11 @@ COMMON_PARAM_LIST = [
 ]
 
 
+@app.exception(NotFound)
+def ignore_404s(request, exception):
+    return text("Yep, I totally found the page: {}".format(request.url))
+
+
 @app.exception(SanicException)
 def json_error(request, exception):
     if isinstance(exception, ApiException):
@@ -36,6 +44,9 @@ def json_error(request, exception):
                 'message': exception.message,
             }
         )
+    elif isinstance(exception, NotFound):
+        logger.info(f'page not found {request.url}')
+        return text("Yep, I totally found the page: {}".format(request.url))
     else:
         logger.error(f'server error {exception}')
         return json(
@@ -52,12 +63,6 @@ def configure_app():
     app.config.from_object(Config)
 
 
-# 加载蓝图模块
-# def register_routes(_app):
-#     _app.blueprint(weibo_bp)
-#     _app.blueprint(auth_bp)
-
-
 def create_db():
     from src.models import entities, engine
     entities.BaseModel.metadata.create_all(engine)
@@ -66,5 +71,4 @@ def create_db():
 if __name__ == '__main__':
     configure_app()
     create_db()
-    # register_routes(app)
     app.run(host='0.0.0.0', port=8000, debug=True)
