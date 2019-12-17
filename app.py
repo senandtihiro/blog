@@ -23,7 +23,7 @@ COMMON_PARAM_LIST = [
 
 
 @app.exception(SanicException)
-def json_error(request, exception):
+def json_error(exception):
     if isinstance(exception, ApiException):
         return json(
             {
@@ -48,11 +48,11 @@ def configure_app():
 
 
 # 加载蓝图模块
-def register_routes(app):
+def register_routes(_app):
     from src.routes.weibo import weibo as routes_weibo
     from src.routes.auth import auth as routes_auth
-    app.blueprint(routes_weibo)
-    app.blueprint(routes_auth)
+    _app.blueprint(routes_weibo)
+    _app.blueprint(routes_auth)
 
 
 def create_db():
