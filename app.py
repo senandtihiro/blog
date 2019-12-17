@@ -7,6 +7,8 @@ from sanic.log import logger
 
 from src.logger import LOGGING_CONFIG
 from src.exceptions import ApiException
+from src.routes.weibo import weibo as routes_weibo
+from src.routes.auth import auth as routes_auth
 
 
 app = Sanic(name='blog', log_config=LOGGING_CONFIG)
@@ -50,8 +52,6 @@ def configure_app():
 
 # 加载蓝图模块
 def register_routes(_app):
-    from src.routes.weibo import weibo as routes_weibo
-    from src.routes.auth import auth as routes_auth
     _app.blueprint(routes_weibo)
     _app.blueprint(routes_auth)
 
