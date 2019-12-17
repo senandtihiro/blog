@@ -3,7 +3,7 @@ from sanic.response import json
 
 from src.controllers import auth as auth_controller
 
-auth = Blueprint('auth', url_prefix='/auth')
+auth_bp = Blueprint('auth', url_prefix='/auth')
 
 
 """
@@ -20,7 +20,7 @@ auth = Blueprint('auth', url_prefix='/auth')
 """
 
 
-@auth.route("/login", methods=["POST"])
+@auth_bp.route("/login", methods=["POST"])
 async def login(request):
     res = await auth_controller.verify_user(request)
     return json(res)
@@ -40,7 +40,7 @@ async def login(request):
 """
 
 
-@auth.route("/register", methods=["POST"])
+@auth_bp.route("/register", methods=["POST"])
 async def register_account(request):
     data = await auth_controller.register_account(request.json)
 

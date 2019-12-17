@@ -8,7 +8,7 @@ from ..controllers import weibo as weibo_controller
 
 from . import authorized
 
-weibo = Blueprint('weibo', url_prefix='/weibo')
+weibo_bp = Blueprint('weibo', url_prefix='/weibo')
 
 
 """
@@ -22,7 +22,7 @@ weibo = Blueprint('weibo', url_prefix='/weibo')
 @apiSuccess {Object} data 创建成功，返回该weibo
 """
 
-@weibo.route('/create', methods=['POST'])
+@weibo_bp.route('/create', methods=['POST'])
 @authorized()
 async def create(request, **kwargs):
     loop = asyncio.get_event_loop()
@@ -47,19 +47,19 @@ async def create(request, **kwargs):
 @apiSuccess {[]} data 创建成功，返回该weibo
 """
 
-@weibo.route('/get_weibo_list', methods=['POST'])
+@weibo_bp.route('/get_weibo_list', methods=['POST'])
 async def get_weibo_list(request):
     res = await weibo_controller.get_weibo_list(request.json)
     return json(res)
 
 
-@weibo.route('/create2', methods=['POST'])
+@weibo_bp.route('/create2', methods=['POST'])
 async def create(request):
     res = await weibo_controller.create2(request.json)
     return json(res)
 
 
-@weibo.route('/')
+@weibo_bp.route('/')
 async def index(request):
     return json({
         'hello': 'world'
