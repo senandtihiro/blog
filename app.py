@@ -53,9 +53,10 @@ def configure_app():
 
 
 # 加载蓝图模块
-# def register_routes(_app):
-#     _app.blueprint(weibo_bp)
-#     _app.blueprint(auth_bp)
+def register_routes(_app):
+    _app.blueprint(weibo_bp)
+    _app.blueprint(auth_bp)
+    return _app
 
 
 def create_db():
@@ -66,5 +67,5 @@ def create_db():
 if __name__ == '__main__':
     configure_app()
     create_db()
-    # register_routes(app)
+    app = register_routes(app)
     app.run(host='0.0.0.0', port=8000, debug=True)
