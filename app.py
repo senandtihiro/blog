@@ -23,8 +23,9 @@ COMMON_PARAM_LIST = [
 
 
 @app.exception(SanicException)
-def json_error(exception):
+def json_error(request, exception):
     if isinstance(exception, ApiException):
+        logger.info(f'request {request} raise exception')
         return json(
             {
                 'error_code': exception.code,
